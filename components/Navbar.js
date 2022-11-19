@@ -7,6 +7,7 @@ import { BsFillBagCheckFill } from 'react-icons/bs';
 import { MdAccountCircle } from 'react-icons/md';
 import { IoMdLogIn, IoMdLogOut } from 'react-icons/io';
 const Navbar = () => {
+  //toggle cart in or out
   const toggleCart = () => {
     if (ref.current.classList.contains('translate-x-full')) {
       ref.current.classList.remove('translate-x-full')
@@ -37,7 +38,7 @@ const Navbar = () => {
           <button className="inline-flex items-center py-1 px-3 focus:outline-none hover:text-pink-600  text-2xl mt-0 md:mt-0 "><AiOutlineShoppingCart />
           </button>
         </div>
-        <div ref={ref} className="w-72 h-[100vh] sidecart absolute top-0 right-0 bg-pink-100 px-8 py-10 transform transition-transform translate-x-full">
+        <div ref={ref} className="w-72 h-[100vh] sidecart absolute top-20 sm:top-14 right-0 rounded-tl-lg  bg-pink-100 px-8 py-10 transform transition-transform translate-x-full">
           <h2 className='font-bold text-xl text-center'>Shoping Cart</h2>
           <span onClick={toggleCart} className="absolute top-4 right-2 cursor-pointer text-2xl text-pink-500"><AiFillCloseCircle /></span>
           <ol className='Serial_number list-decimal font-mono'>
