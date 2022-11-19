@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import Footer from '../components/Footer'
-import Navbar from '../components/Navbar'
+
 
 export default function Home() {
   return (
@@ -11,7 +10,7 @@ export default function Home() {
         <meta name="description" content="CodesWear.com - Wear the codes" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navbar />
+      
       <div>
         <img src='/home.jpg' alt='home img' />
       </div>
@@ -95,7 +94,6 @@ export default function Home() {
         </div>
       </section>
 
-      <Footer />
     </div>
   )
 }

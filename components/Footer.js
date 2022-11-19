@@ -8,8 +8,11 @@ const Footer = () => {
       <footer className="text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
           <div className="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left md:mt-0 mt-10">
-            <Link href='/' className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
-              <Image src='/logo.webp' alt='' width={200} height={40} />
+            <Link href="/" legacyBehavior>
+              <a className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+                <Image src='/logo.webp' alt='' width={200} height={40} />
+              </a>
+
             </Link>
             <p className="mt-2 text-sm text-gray-500 px-4">codeswear.com design the customised apparel for Developer</p>
           </div>
@@ -18,16 +21,20 @@ const Footer = () => {
               <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Shop</h2>
               <nav className="list-none mb-10">
                 <li>
-                  <Link href='/tshirts' className="text-gray-600 hover:text-gray-800">Tshirts</Link>
+                  <Link href='/tshirts' legacyBehavior>
+                    <a className="text-gray-600 hover:text-gray-800">Tshirts</a>
+                  </Link>
                 </li>
                 <li>
-                  <Link href='/hoodies' className="text-gray-600 hover:text-gray-800">Hoodies</Link>
+                  <Link href='/hoodies' legacyBehavior>
+                    <a className="text-gray-600 hover:text-gray-800">Hoodies</a>
+                  </Link>
                 </li>
                 <li>
-                  <Link href='/stickers' className="text-gray-600 hover:text-gray-800">Stickers</Link>
+                  <Link href='/stickers' legacyBehavior><a className="text-gray-600 hover:text-gray-800">Stickers</a></Link>
                 </li>
                 <li>
-                  <Link href='/mugs' className="text-gray-600 hover:text-gray-800">Mugs</Link>
+                  <Link href='/mugs' legacyBehavior><a className="text-gray-600 hover:text-gray-800">Mugs</a></Link>
                 </li>
               </nav>
             </div>
