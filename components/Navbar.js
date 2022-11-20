@@ -38,11 +38,12 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
           <button className="inline-flex items-center py-1 px-3 focus:outline-none hover:text-pink-600  text-2xl mt-0 md:mt-0 "><AiOutlineShoppingCart />
           </button>
         </div>
-        <div ref={ref} className="w-72 h-[100vh] sidecart absolute top-20 sm:top-14 right-0 rounded-tl-lg  bg-pink-100 px-8 py-10 transform transition-transform translate-x-full">
+        <div ref={ref} className={`w-72 h-[100vh] sidecart absolute top-20 sm:top-14 right-0 rounded-tl-lg  bg-pink-100 px-8 py-10 transform transition-transform ${Object.keys(cart).length !== 0 ? 'translate-x-0' : 'translate-x-full'}`}>
           <h2 className='font-bold text-xl text-center'>Shoping Cart</h2>
           <span onClick={toggleCart} className="absolute top-1 right-1 cursor-pointer text-2xl text-pink-500"><AiFillCloseCircle /></span>
           <ol className='Serial_number list-decimal font-mono'>
-            {Object.keys(cart).length == 0 && <div className="my-4 text-base font-normal">Your cart is Empty !</div>}
+            {Object.keys(cart).length == 0 && <div className="my-4 text-base font-normal"><div><img src='/empty_cart.webp' alt='Empty' className="object-cover h-48 w-96 my-4 rounded-lg" /></div> Your cart is Empty!<div className='a font-sans text-sm'>Add items to it now.
+              <Link href={'/'}><button onClick={toggleCart} className="bg-transparent hover:text-pink-500 font-semibold py-1 px-1 border-0">Shop now</button></Link></div> </div>}
             {Object.keys(cart).map((k) => {
               return <li key={k}>
                 <div className="item flex my-5">
