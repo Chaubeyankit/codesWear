@@ -14,7 +14,7 @@ const Footer = () => {
               </a>
 
             </Link>
-            <p className="mt-2 text-sm text-gray-500 px-4">codeswear.com design the customised apparel for Developer</p>
+            <p className="mt-2 text-sm text-gray-500 px-4">codeswear.com design the customised apparel for Developers</p>
           </div>
           <div className="flex-grow flex flex-wrap md:pr-20 -mb-10 md:text-left text-center order-first">
             <div className="lg:w-1/4 md:w-1/2 w-full px-4">
