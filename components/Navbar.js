@@ -21,7 +21,7 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
   // only returns one item. It returns an Object called current.
   const ref = useRef()
   return (
-    <div className="shadow-md sticky top-0 bg-pink-100 z-10">
+    <div className="shadow-md sticky top-0 bg-pink-50 z-10">
       <div className="container mx-auto flex flex-wrap p-2 flex-col md:flex-row items-center">
         <div className='logo mr-auto md:mx-5'>
           <Link href='/'><Image src='/logo.webp' alt='' width={200} height={40} /></Link>
@@ -34,8 +34,9 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
             <Link href={'/mugs'}><li className="hover:text-pink-600">Mugs</li></Link>
           </ul>
         </nav>
-        <div onClick={toggleCart} className="cart absolute right-0 mx-5 cursor-pointer">
-          <button className="inline-flex items-center py-1 px-3 focus:outline-none hover:text-pink-600  text-2xl mt-0 md:mt-0 "><AiOutlineShoppingCart />
+        <div className="cart absolute right-0 mx-5 cursor-pointer">
+          <button className="inline-flex items-center py-1 px-1 focus:outline-none hover:text-pink-600  text-2xl mt-0 md:mt-0"><MdAccountCircle /></button>
+          <button onClick={toggleCart} className="inline-flex items-center py-1 px-2 focus:outline-none hover:text-pink-600  text-2xl mt-0 md:mt-0 "><AiOutlineShoppingCart />
           </button>
         </div>
         <div ref={ref} className={`w-72 h-[100vh] sidecart absolute top-20 sm:top-14 right-0 rounded-tl-lg  bg-pink-100 px-8 py-10 transform transition-transform ${Object.keys(cart).length !== 0 ? 'translate-x-0' : 'translate-x-full'}`}>
