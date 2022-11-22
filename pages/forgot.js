@@ -1,7 +1,13 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
-
-const forgot = () => {
+import { useRouter } from 'next/router'
+const Forgot = () => {
+  const router = useRouter()
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      router.push('/')
+    }
+  }, [])
   return (
     <>
       <section className="bg-gray-50">
@@ -45,4 +51,4 @@ const forgot = () => {
   )
 }
 
-export default forgot
+export default Forgot

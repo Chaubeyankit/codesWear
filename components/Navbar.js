@@ -47,8 +47,8 @@ const Navbar = ({ user, logout, cart, addToCart, removeFromCart, clearCart, subT
 
             {user.value && <button className="inline-flex items-center py-1 px-1 focus:outline-none hover:text-pink-600  text-2xl mt-0 md:mt-0"><MdAccountCircle /></button>}
           </a>
-          {!user.value && <Link href={'/login'} legacyBehavior><a><button className="inline-flex items-center py-1 px-1 focus:outline-none hover:text-pink-600  text-2xl mt-0 md:mt-0"><IoMdLogIn /></button></a></Link>}
-          <button onClick={toggleCart} className="inline-flex items-center py-1 px-2 focus:outline-none hover:text-pink-600  text-2xl mt-0 md:mt-0 "><AiOutlineShoppingCart />
+          {!user.value && <Link href={'/login'} legacyBehavior><a><button className="inline-flex items-center py-1 px-1 focus:outline-none hover:text-pink-600 mt-0 md:mt-0 justify-center"><IoMdLogIn className='text-2xl' /></button></a></Link>}
+          <button onClick={toggleCart} className="inline-flex items-center py-1 px-2 focus:outline-none hover:text-pink-600  mt-0 md:mt-0 "><AiOutlineShoppingCart className='text-2xl' />
           </button>
         </div>
         <div ref={ref} className={`w-72 h-[100vh] sidecart absolute top-20 sm:top-14 right-0 rounded-tl-lg  bg-pink-100 px-8 py-10 transform transition-transform ${Object.keys(cart).length !== 0 ? 'translate-x-0' : 'translate-x-full'}`}>

@@ -18,11 +18,11 @@ const Login = () => {
       setPassword(e.target.value)
     }
   }
-  // useEffect(() => {
-  //   if (localStorage.getItem('token')) {
-  //     router.push('/')
-  //   }
-  // }, [])
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      router.push('/')
+    }
+  }, [])
   const handleSubmit = async (e) => {
     e.preventDefault()
     const data = { email, password }
