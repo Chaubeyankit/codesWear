@@ -86,7 +86,7 @@ const Post = ({ buyNow, addToCart, variants, product }) => {
                   </svg>
                   <span className="text-gray-600 ml-3">4 Reviews</span>
                 </span>
-                <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s">
+                <span className="flex ml-3 pl-3 py-2 border-l-2 border-pink-200 space-x-2s">
                   <a className="text-gray-500">
                     <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
                       <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
@@ -104,8 +104,8 @@ const Post = ({ buyNow, addToCart, variants, product }) => {
                   </a>
                 </span>
               </div>
-              <p className="leading-relaxed">Fam locavore kickstarter distillery. Mixtape</p>
-              <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
+              <p className="leading-relaxed">{product.desc}.</p>
+              <div className="flex mt-6 items-center pb-5 border-b-2 border-pink-100 mb-5">
                 <div className="flex">
                   <span className="mr-3">Color</span>
                   {Object.keys(variants).includes('white') && Object.keys(variants['white']).includes(size) && <button onClick={() => { refreshVariants(size, 'white') }} className={`border-2 rounded-full w-6 h-6 focus:outline-none ${color === 'white' ? 'border-black' : 'border-gray-400'}`}></button>}
@@ -113,6 +113,7 @@ const Post = ({ buyNow, addToCart, variants, product }) => {
                   {Object.keys(variants).includes('blue') && Object.keys(variants['blue']).includes(size) && <button onClick={() => { refreshVariants(size, 'blue') }} className={`border-2 ml-1 bg-blue-900 rounded-full w-6 h-6 focus:outline-none ${color === 'blue' ? 'border-black' : 'border-gray-400'}`}></button>}
                   {Object.keys(variants).includes('red') && Object.keys(variants['red']).includes(size) && <button onClick={() => { refreshVariants(size, 'red') }} className={`border-2 ml-1 bg-red-600 rounded-full w-6 h-6 focus:outline-none ${color === 'red' ? 'border-black' : 'border-gray-400'}`}></button>}
                   {Object.keys(variants).includes('gray') && Object.keys(variants['gray']).includes(size) && <button onClick={() => { refreshVariants(size, 'gray') }} className={`border-2 ml-1 bg-gray-800 rounded-full w-6 h-6 focus:outline-none ${color === 'gray' ? 'border-black' : 'border-gray-400'}`}></button>}
+                  {Object.keys(variants).includes('multicolor') && Object.keys(variants['multicolor']).includes(size) && <button>Multicolor</button>}
                 </div>
                 <div className="flex ml-6 items-center">
                   <span className="mr-3">Size</span>
@@ -123,6 +124,8 @@ const Post = ({ buyNow, addToCart, variants, product }) => {
                       {Object.keys(variants[color]).includes('L') && <option value={'L'}>L</option>}
                       {Object.keys(variants[color]).includes('XL') && <option value={'XL'}>XL</option>}
                       {Object.keys(variants[color]).includes('XXL') && <option value={'XXL'}>XXL</option>}
+                      {Object.keys(variants[color]).includes('logo') && <option value={'logo'}>logo</option>}
+                      {Object.keys(variants[color]).includes('skin') && <option value={'skin'}>skin</option>}
                     </select>
                     <span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
                       <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4" viewBox="0 0 24 24">

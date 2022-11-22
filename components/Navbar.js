@@ -1,12 +1,12 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
-import { useRef } from 'react';
+import Link from 'next/link';
+import { useState } from 'react';
 import { AiOutlineShoppingCart, AiFillCloseCircle, AiFillMinusCircle, AiFillPlusCircle, AiFillDelete } from 'react-icons/ai';
 import { BsFillBagCheckFill } from 'react-icons/bs';
 import { MdAccountCircle } from 'react-icons/md';
 import { IoMdLogIn, IoMdLogOut } from 'react-icons/io';
-const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
+const Navbar = ({ user, logout, cart, addToCart, removeFromCart, clearCart, subTotal }) => {
   //toggle cart in or out
   const toggleCart = () => {
     if (ref.current.classList.contains('translate-x-full')) {
@@ -18,6 +18,7 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
       ref.current.classList.add('translate-x-full')
     }
   }
+  const [dropdown, setDropdown] = useState(false)
   // only returns one item. It returns an Object called current.
   const ref = useRef()
   return (
@@ -35,7 +36,18 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
           </ul>
         </nav>
         <div className="cart absolute right-0 mx-5 cursor-pointer">
-          <button className="inline-flex items-center py-1 px-1 focus:outline-none hover:text-pink-600  text-2xl mt-0 md:mt-0"><MdAccountCircle /></button>
+          <a onMouseOver={() => { setDropdown(true) }} onMouseLeave={() => { setDropdown(false) }}>
+            {dropdown && <div onMouseOver={() => { setDropdown(true) }} onMouseLeave={() => { setDropdown(false) }} className="absolute right-12 bg-pink-50 shadow-lg border top-8 rounded-md px-5 w-36 py-4 skew-x-3">
+              <ul>
+                <Link href={'/myaccount'} legacyBehavior><a><li className="py-1 text-black hover:text-pink-600 font-semibold">My Account</li></a></Link>
+                <Link href={'/order'} legacyBehavior><a><li className="py-1 text-black hover:text-pink-600 font-semibold">Orders</li></a></Link>
+                <li onClick={logout} className="py-1 text-black hover:text-pink-600 flex font-semibold">Logout <IoMdLogOut className="m-auto mx-2 flex text-lg" /></li>
+              </ul>
+            </div>}
+
+            {user.value && <button className="inline-flex items-center py-1 px-1 focus:outline-none hover:text-pink-600  text-2xl mt-0 md:mt-0"><MdAccountCircle /></button>}
+          </a>
+          {!user.value && <Link href={'/login'} legacyBehavior><a><button className="inline-flex items-center py-1 px-1 focus:outline-none hover:text-pink-600  text-2xl mt-0 md:mt-0"><IoMdLogIn /></button></a></Link>}
           <button onClick={toggleCart} className="inline-flex items-center py-1 px-2 focus:outline-none hover:text-pink-600  text-2xl mt-0 md:mt-0 "><AiOutlineShoppingCart />
           </button>
         </div>
