@@ -40,7 +40,7 @@ const Navbar = ({ user, logout, cart, addToCart, removeFromCart, clearCart, subT
             {dropdown && <div onMouseOver={() => { setDropdown(true) }} onMouseLeave={() => { setDropdown(false) }} className="absolute right-12 bg-pink-50 shadow-lg border top-8 rounded-md px-5 w-36 py-4 skew-x-3">
               <ul>
                 <Link href={'/myaccount'} legacyBehavior><a><li className="py-1 text-black hover:text-pink-600 font-semibold">My Account</li></a></Link>
-                <Link href={'/order'} legacyBehavior><a><li className="py-1 text-black hover:text-pink-600 font-semibold">Orders</li></a></Link>
+                <Link href={'/orders'} legacyBehavior><a><li className="py-1 text-black hover:text-pink-600 font-semibold">Orders</li></a></Link>
                 <li onClick={logout} className="py-1 text-black hover:text-pink-600 flex font-semibold">Logout <IoMdLogOut className="m-auto mx-2 flex text-lg" /></li>
               </ul>
             </div>}
