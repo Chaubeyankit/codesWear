@@ -1,11 +1,65 @@
 import React from 'react'
 import Link from 'next/link'
 import { useState } from 'react'
+import Head from 'next/head';
+import Script from 'next/script';
 import { AiOutlineShoppingCart, AiFillCloseCircle, AiFillMinusCircle, AiFillPlusCircle, AiFillDelete } from 'react-icons/ai';
 const Checkout = ({ user, cart, clearCart, addToCart, removeFromCart, subTotal }) => {
+
+  const initiatePayment = async () => {
+    let oId = Math.floor(Math.random() * Date.now());
+
+    //Get a tran token
+    const data = { cart, subTotal, oId, email: "email" }
+    let a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/pretransaction`, {
+      method: 'POST', // or 'PUT'
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+    let txnRes = await a.json();
+    console.log(txnRes)
+    let txnToken = txnRes.txnToken
+
+    var config = {
+      "root": "",
+      "flow": "DEFAULT",
+      "data": {
+        "orderId": oId, /* update order id */
+        "token": txnToken, /* update token value */
+        "tokenType": "TXN_TOKEN",
+        "amount": subTotal /* update amount */
+      },
+      "handler": {
+        "notifyMerchant": function (eventName, data) {
+          console.log("notifyMerchant handler function called");
+          console.log("eventName => ", eventName);
+          console.log("data => ", data);
+        }
+      }
+    };
+
+    window.Paytm.CheckoutJS.init(config).then(function onSuccess() {
+      // after successfully updating configuration, invoke JS Checkout
+      window.Paytm.CheckoutJS.invoke();
+    }).catch(function onError(error) {
+      console.log("error => ", error);
+    });
+
+  }
+
+
   return (
     <div>
       <div className="container p-12 mx-auto">
+
+
+        <Head><meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0" /></Head>
+
+        <Script type="application/javascript" src={`${process.env.NEXT_PUBLIC_PAYTM_HOST}/merchantpgpui/checkoutjs/merchants/${process.env.NEXT_PUBLIC_PAYTM_MID}.js`} crossorigin="anonymous"></Script>
+
+
         <div className="flex flex-col w-full px-0 mx-auto md:flex-row">
           <div className="flex flex-col md:w-full">
             <h2 className="mb-4 font-bold md:text-xl text-heading ">Shipping Address
@@ -63,8 +117,9 @@ const Checkout = ({ user, cart, clearCart, addToCart, removeFromCart, subTotal }
                   </div>
                 </div>
                 <div className="mt-4">
-                  <button
-                    className="w-full  text-white bg-pink-500 hover:bg-pink-600 font-bold py-2 px-4 rounded">Process</button>
+                  <Link href={'/checkout'}><button onClick={initiatePayment}
+                    className="w-full  text-white bg-pink-500 hover:bg-pink-600 font-bold py-2 px-4 rounded">Process
+                  </button></Link>
                 </div>
               </div>
             </div>
